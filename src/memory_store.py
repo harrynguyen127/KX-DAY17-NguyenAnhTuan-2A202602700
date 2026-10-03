@@ -6,7 +6,6 @@ import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 
-
 EMPTY_PROFILE = "# User Profile\n\n_No saved facts yet._\n"
 _FACT_LINE = re.compile(r"^-\s+(?:\*\*)?([\w-]+)(?:\*\*)?\s*:\s*(.+?)\s*$")
 
@@ -274,11 +273,11 @@ def _is_question_only(text: str) -> bool:
     if not text.rstrip().endswith("?"):
         return False
     declarative_markers = (
-        r"\btên\s+là\b",
-        r"\b(?:mình|tôi)\s+(?:đang\s+|vẫn\s+)?ở\b",
-        r"\b(?:mình|tôi)\s+(?:đang\s+|vẫn\s+)?làm\b",
-        r"\byêu\s+thích\s+là\b",
-        r"\b(?:mình|tôi)\s+nuôi\b",
+        r"\b(?:mình|tôi)\s+tên\s+là\s+(?!gì\b).+",
+        r"\b(?:mình|tôi)\s+(?:đang\s+|vẫn\s+)?ở\s+(?!đâu\b).+",
+        r"\b(?:mình|tôi)\s+(?:đang\s+|vẫn\s+)?làm\s+(?!gì\b|nghề\s+gì\b|việc\b).+",
+        r"\byêu\s+thích\s+là\s+(?!gì\b).+",
+        r"\b(?:mình|tôi)\s+nuôi\s+(?!con\s+gì\b|gì\b).+",
     )
     return not any(re.search(marker, text, flags=re.IGNORECASE) for marker in declarative_markers)
 

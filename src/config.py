@@ -6,7 +6,6 @@ from pathlib import Path
 
 from model_provider import ProviderConfig
 
-
 SUPPORTED_PROVIDERS = {"openai", "custom", "gemini", "anthropic", "ollama", "openrouter"}
 
 DEFAULT_MODELS = {

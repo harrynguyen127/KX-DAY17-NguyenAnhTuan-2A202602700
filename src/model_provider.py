@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-
 SUPPORTED_PROVIDERS = frozenset(
     {"openai", "custom", "gemini", "anthropic", "ollama", "openrouter"}
 )
